@@ -17,7 +17,7 @@ PostController.update = (req, res) => {
 };
 
 PostController.findPost = (req, res) => {
-
+  
 };
 
 PostController.getAllPosts = (req, res) => {
