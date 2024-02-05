@@ -80,7 +80,6 @@ describe('Post controller', () => {
     });
 
     describe('findPost', () => {
-        it('should return the post object for a valid post id');
-        it('should return a response for an invalid post id');
+
     })
 });
