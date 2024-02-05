@@ -83,4 +83,8 @@ describe('Post controller', () => {
         it('should return the post object for valid post');
         it('should return a response for an invalid post');
     })
+
+    describe('getAllPosts', () => {
+        
+    })
 });
