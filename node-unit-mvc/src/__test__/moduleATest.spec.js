@@ -129,10 +129,77 @@ describe('Module A', () => {
     });
 
     describe('update', () => {
-        it('should return the updated post object');
+        var updatePostStub;
+
+        beforeEach(() => {
+            // before every test case setup first
+            res = {
+                json: sinon.spy(),
+                status: sinon.stub().returns({ end: sinon.spy() })
+            };
+        });
+
+        afterEach(() => {
+            // executed after the test case
+            updatePostStub.restore();
+        });
+
+       
+        it('should return the updated post object', async () => {
+            expectedResult = {
+                _id: '507asdghajsdhjgasd',
+                title: 'My first test post',
+                content: 'Random content',
+                author: 'stswenguser',
+            };
+
+            updatePostStub = sinon.stub(ModuleA, 'updatePost').yields(null, expectedResult);
+
+            // Act
+            await PostController.update(req, res);
+
+            // Assert
+            sinon.assert.calledWith(ModuleA.updatePost, req.body);
+            sinon.assert.calledWith(res.json, sinon.match({ title: req.body.title }));
+            sinon.assert.calledWith(res.json, sinon.match({ content: req.body.content }));
+            sinon.assert.calledWith(res.json, sinon.match({ author: req.body.author }));
+        });
     });
 
     describe('getAllPosts', () => {
-        it('should return all the posts in the database');
+        var getPostStub;
+
+        beforeEach(() => {
+            // before every test case setup first
+            res = {
+                json: sinon.spy(),
+                status: sinon.stub().returns({ end: sinon.spy() })
+            };
+        });
+
+        afterEach(() => {
+            // executed after the test case
+            getPostStub.restore();
+        });
+
+        it('should return all the posts in the database', async () => {
+            expectedResult = {
+                _id: '507asdghajsdhjgasd',
+                title: 'My first test post',
+                content: 'Random content',
+                author: 'stswenguser',
+            };
+
+            getPostStub = sinon.stub(ModuleA, 'getAllPosts').yields(null, expectedResult);
+
+            // Act
+            await PostController.getAllPosts(req, res);
+
+            // Assert
+            sinon.assert.calledWith(ModuleA.getAllPosts);
+            sinon.assert.calledWith(res.json, sinon.match({ title: req.body.title }));
+            sinon.assert.calledWith(res.json, sinon.match({ content: req.body.content }));
+            sinon.assert.calledWith(res.json, sinon.match({ author: req.body.author }));
+        });
     });
 });
