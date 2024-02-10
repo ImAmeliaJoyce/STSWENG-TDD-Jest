@@ -1,0 +1,10 @@
+
+  Id     Duration CommandLine
+  --     -------- -----------
+   1        0.101 try { . "c:\Users\AJ\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\workbench\contrib\terminal\browser\media\shellIntegrati…
+   2        0.166 git branch main
+   3        0.173 git checkout main
+   4        0.477 git branch
+   5        2.898 git pull origin main
+   6        0.101 history > history_for_print.txt
+
